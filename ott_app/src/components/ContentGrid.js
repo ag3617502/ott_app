@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { fetchContent } from '../redux/actions/contentActions';
 import { fetchContent, incrementPage } from '../features/content/contentSlice';
 import ContentCard from './ContentCard';
 

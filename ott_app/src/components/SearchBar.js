@@ -5,7 +5,7 @@ const SearchBar = ({ searchTerm, setSearchTerm, suggestions }) => {
   const [showSuggestions, setShowSuggestions] = useState(true);
 
   useEffect(() => {
-    setHighlightIndex(-1); // Reset highlight index when suggestions change
+    setHighlightIndex(-1);
   }, [suggestions]);
 
   const handleKeyDown = (e) => {
@@ -34,17 +34,30 @@ const SearchBar = ({ searchTerm, setSearchTerm, suggestions }) => {
 
   return (
     <div className="search-bar-container">
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={(e) => {
-          setSearchTerm(e.target.value);
-          setShowSuggestions(true);
-        }}
-        onKeyDown={handleKeyDown}
-        placeholder="Search..."
-        className="search-bar"
-      />
+      <div className="search-bar-wrapper">
+        <div onClick={()=>setSearchTerm('')}>
+        <img
+          src="https://test.create.diagnal.com/images/Back.png"
+          alt="Back"
+          className="back-button"
+        /></div>
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            setShowSuggestions(true);
+          }}
+          onKeyDown={handleKeyDown}
+          placeholder="Search..."
+          className="search-bar"
+        />
+        <img
+          src="https://test.create.diagnal.com/images/search.png"
+          alt="Search"
+          className="search-button"
+        />
+      </div>
       {showSuggestions && suggestions.length > 0 && (
         <ul className="suggestions-list">
           {suggestions.map((suggestion, index) => (
@@ -60,6 +73,7 @@ const SearchBar = ({ searchTerm, setSearchTerm, suggestions }) => {
       )}
     </div>
   );
+
 };
 
 export default SearchBar;
